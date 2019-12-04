@@ -1,0 +1,17 @@
+
+.gridPane{
+    -fx-background-color: #343434;
+}
+.tile{
+    -fx-min-width: 80;
+    -fx-min-height: 120;
+    -fx-max-width: 80;
+    -fx-max-height: 120;
+    -fx-background-color: #0072bc;
+
+}
+
+.tileBlank{
+    -fx-background-color: #fff;
+    -fx-background-size: 100%;
+}
