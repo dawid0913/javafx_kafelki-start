@@ -15,32 +15,32 @@
 }
 
 .img1{
-    -fx-background-image: url('https://ocdn.eu/pulscms-transforms/1/c2iktkpTURBXy8wNWIxNDFiZmE2ZGNkYmExOGNkMWNjNmMxYzQ5ZTNhMS5qcGeRkwIAzQHk');
-}
+    -fx-background-image: url('img/dziecko.png');
+ }
 .img2{
-    -fx-background-image: url('https://i.pinimg.com/originals/81/ef/53/81ef53720cd4342e057b99a012fd9a1c.jpg');
+    -fx-background-image: url('img/kubus.png');
 }
 .img3{
-    -fx-background-image: url('https://i.pinimg.com/originals/7c/39/7e/7c397e94b8999aeecdbf84566047d05a.jpg');
+    -fx-background-image: url('img/lew.png');
 }
 .img4{
-    -fx-background-image: url('https://thumbs.img-sprzedajemy.pl/1000x901c/7c/81/99/szkice-rysunki-projekty-tatuazy-poznan-521220210.jpg');
+    -fx-background-image: url('img/motyl.png');
 }
 .img5{
-    -fx-background-image: url('https://i.pinimg.com/736x/42/39/4e/42394ed6da54a239f0f715bc81bb626f.jpg');
+    -fx-background-image: url('img/mysz.png');
 }
 .img6{
-    -fx-background-image: url('https://i.pinimg.com/originals/ce/e7/1e/cee71e2075f5f79b49d0b1ada5b95c22.jpg');
+    -fx-background-image: url('img/nosacz.png');
 }
 .img7{
-    -fx-background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmuTk05LcqtA3gboYNBYa7xAZ9uGnexLI2ZkrTf2o9J90jYYF0&s');
+    -fx-background-image: url('img/panda.png');
 }
 .img8{
-    -fx-background-image: url('https://img.pixers.pics/pho_wat(s3:700/FO/90/79/94/90/700_FO90799490_065d49b1a2d8b810b75d7a00684d95e5.jpg,700,700,cms:2018/10/5bd1b6b8d04b8_220x50-watermark.png,over,480,650,jpg)/fototapety-slodkie-urocze-dziecko-ilustracja-panda-recznie-rysowane-szkic-mis-panda-jedzenie-bambusa-na-bialym-tle.jpg.jpg');
+    -fx-background-image: url('img/pani.png');
 }
 .img9{
-    -fx-background-image: url('https://i.pinimg.com/474x/f1/9c/ed/f19ced4325c495f785a6eda14e3a338b.jpg');
+    -fx-background-image: url('img/roza.png');
 }
 .img10{
-    -fx-background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThR7vYBdzS2tqh8M0I3dCraByMS0Ve1jFSYzVBmbe19G13zAusHA&s');
+    -fx-background-image: url('img/samochod.png');
 }
