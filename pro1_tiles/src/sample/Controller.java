@@ -4,7 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
-import java.util.concurrent.TimeUnit;
+import java.util.ArrayList;
 
 public class Controller {
 
@@ -47,12 +47,17 @@ public class Controller {
      * Tablica przechowuje id usuniętych kaflków-buttonów tzn. już poprawnie odkryte czyli dopasowane ze sobą
      */
     private String[] removeButtonArr = new String[20];
+    private ArrayList<String> removeButtonList = new ArrayList<String>(20);
 
     /**
      * Zmienna zliczjąca usunięte kafelki
      */
     private Integer countRemoveButton = 0;
 
+    /**
+     * Zmienna bool ustawiająca blokadę
+     */
+    private Boolean stepLock = false;
 
 
     public Controller() {
@@ -74,11 +79,14 @@ public class Controller {
     @FXML
     public void tileClick(ActionEvent event) {
         Button clickedButton = (Button) event.getSource();
-        //clickedButton.setStyle(img1);
-        //clickedButton.getStyleClass().add("img1");
 
-        showTiles(clickedButton);
-
+        if(!stepLock){
+            if(removeButtonList.contains(clickedButton.getId())){
+                System.out.println("kafelek został już dopasowany - nie możemy odsłonić");
+            } else {
+                showTiles(clickedButton);
+            }
+        }
     }
 
     /**
@@ -87,23 +95,25 @@ public class Controller {
      */
     public void showTiles(Button clickedButton) {
 
-        //showImg(clickedButton, countClickedTiles);
-
         if(countClickedTiles < 2){
 
             showButtonArr[countClickedTiles] = clickedButton;
             showImg(clickedButton, countClickedTiles);
             countClickedTiles++;
             if(countClickedTiles == 2){
-                /*try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException ex) {
-                    System.out.println("błąd");
-                    return;
-                }*/
-                //checkShowTiles();
+                Thread thread = new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            Thread.sleep(1000);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        checkShowTiles();
+                    }
+                });
+                thread.start();
             }
-
         }
     }
 
@@ -114,13 +124,25 @@ public class Controller {
 
     public void checkShowTiles(){
         if(showImgArr[0] == showImgArr[1]){
-            System.out.println("nie działa");
-            ///removeTiles();
+            removeTiles();
+            countClickedTiles = 0;
+            if(countRemoveButton == 20){
+                System.out.println("koniec gry");
+                /**
+                 * stepLock = false;    możliwa dalsza gra - defakto gdzieś ze serwera trzeba
+                 * tą informację pobierać i ustawiać ale nie tu bo tu to i tak chyba nie ma sensu bo skoro
+                 * odkrywa poprawnie to ta blokada raczej się nie zmieni
+                 * //tu trzeba zrobić informację do serwera czy coś
+                 */
+            }
         } else {
             hideTiles();    //ukrywam kafelki
             countClickedTiles = 0;  //ustawiam countClickedTiles na 0 aby móc dalej odkrywać kafelki
-            //ale tu trzeba też wywołać jakąś metodę blokującą tego klienta
-            //i wysyłającą informację do serwera aby odblokował drugiego gracza
+            /**
+             * stepLock = true;     np blokada w tym programie i to co poniżej
+             * tu trzeba też wywołać jakąś metodę blokującą tego klienta
+             * i wysyłającą informację do serwera aby odblokował drugiego gracza
+             */
         }
     }
 
@@ -130,15 +152,17 @@ public class Controller {
             showButtonArr[i].getStyleClass().remove(showImgArr[i]);
         }
     }
-/*
+
     public void removeTiles(){
-        for(Integer j = 0; j<2; j++){
-            removeButtonArr[countRemoveButton] = showButtonArr[j].getId();
+        for(Integer i = 0; i<2; i++){
+            removeButtonList.add(showButtonArr[i].getId());
+            //removeButtonArr[countRemoveButton] = showButtonArr[i].getId();
             countRemoveButton++;
-            showButtonArr[j].getStyleClass().remove(showImgArr[j]);
-            showButtonArr[j].getStyleClass().add("tileRemove");
+            showButtonArr[i].getStyleClass().remove(showImgArr[i]);
+            showButtonArr[i].getStyleClass().add("tileRemove");
+        }
     }
-*/
+
 
 
 
